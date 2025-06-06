@@ -1,0 +1,20 @@
+torch
+torchvision
+numpy
+Pillow
+scikit-learn
+opencv-python
+matplotlib
+tqdm
+
+# --- Important Note for GPU Users ---
+# The 'torch' and 'torchvision' entries above will typically install the CPU-only versions.
+# If you have an NVIDIA GPU and want to use it for significantly faster training,
+# you MUST install PyTorch with CUDA support specifically.
+#
+# Please visit the official PyTorch website to get the correct installation command
+# for your operating system and CUDA version:
+# https://pytorch.org/get-started/locally/
+#
+# An example command (for CUDA 11.8 on Windows/Linux) might look like:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
