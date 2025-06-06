@@ -1,4 +1,4 @@
-## 🤔 What Exactly is Emotion Detection?
+## What Exactly is Emotion Detection?
 
 At its core, facial emotion recognition is the task of identifying human emotions (like happy, sad, angry, surprised, etc.) from facial expressions captured in images or video. While it sounds straightforward, it's trickier than it seems. Humans themselves sometimes disagree on an emotion, especially with subtle expressions or poor image quality. Teaching a computer this human intuition requires a powerful blend of data and intelligent algorithms.
 
@@ -10,7 +10,7 @@ Machines don't 'feel'. Instead, they perceive emotions as patterns in pixels. Th
 2.  **Isolate the Expression:** Focus only on the facial region.
 3.  **Classify the Emotion:** Determine which of the predefined emotion categories the expression belongs to.
 
-## 🚀 Our Evolution: From Simple CNNs to Transformative Visions
+## Our Evolution: From Simple CNNs to Transformative Visions
 
 Every machine learning journey begins with a first step, often a foundational one. We started with building a custom **Convolutional Neural Network (CNN)** from scratch. CNNs are excellent at processing image data, learning hierarchical features from pixels (edges, textures, shapes). This initial model served as a great learning ground, but it quickly became clear that a basic CNN on its own had its limitations, especially with a dataset as nuanced (and sometimes noisy!) as the one we were using (think of datasets like FER2013, known for its challenging, low-resolution images).
 
@@ -22,7 +22,7 @@ To elevate our game, we pivoted to **PyTorch**, a powerful deep learning framewo
 2.  **Replacing the Head:** Swapping out its final classification layer with a new one tailored for our 7 emotion categories.
 3.  **Fine-tuning:** Gently updating the new head (and later, a few of MobileNet's deeper layers) with our emotion dataset.
 
-#### The First Roadblock: The Elusive "Disgust" 🤢
+#### The First Roadblock: The Elusive "Disgust" 
 
 Our initial MobileNetV3 model hit a snag: the 'disgust' emotion. It simply **never predicted 'disgust'** for any test sample, resulting in a frustrating **0.00 F1-score**. This highlighted a common problem: **class imbalance**. Some emotions (like 'happy') were abundant, while others (like 'disgust') were very rare in the dataset. The model learned to ignore the rare ones because it could achieve higher overall accuracy by focusing on the prevalent classes.
 
@@ -30,7 +30,7 @@ Our initial MobileNetV3 model hit a snag: the 'disgust' emotion. It simply **nev
 
 To combat this, we introduced **Weighted Cross-Entropy Loss**. This clever technique tells the model: "Hey, errors on 'disgust' are much more costly than errors on 'happy'!" By assigning higher penalties for misclassifying minority classes, we forced the model to pay attention to them. This significantly improved the F1-score for 'disgust' and other low-support emotions, making our model fairer, even if overall accuracy saw a slight dip initially.
 
-### The Leap to Transformers: Unlocking Global Understanding 🚀
+### The Leap to Transformers: Unlocking Global Understanding 
 
 While MobileNetV3 did a great job, we wanted to push the boundaries further. Traditional CNNs excel at local patterns. But what if the model could understand **global relationships** across an entire face simultaneously?
 
@@ -42,13 +42,13 @@ It wasn't just a model swap; it was a deeper dive into fine-tuning:
 *   **Enhanced Data Augmentation:** We introduced a wider variety of transformations (rotations, color jitters, perspective distortions, random crops) to make the model incredibly robust to real-world variations.
 *   **Lower Learning Rate & Scheduler:** With more layers adapting, we used a much smaller learning rate and an adaptive scheduler to ensure stable, effective learning without "unlearning" the ViT's valuable pre-trained knowledge.
 
-#### The Result? A Leap! 📈
+#### The Result? A Leap! 
 
 This comprehensive approach delivered a significant breakthrough: our Vision Transformer model achieved a peak validation accuracy of **over 65%**! More importantly, it showed vastly improved performance across all individual emotion categories, with 'disgust' now having a respectable F1-score and 'happy' and 'surprise' hitting excellent marks.
 
-## ✨ Key Features
+## Key Features
 
-This repository provides everything you need to run your own emotion detection:
+This repository provides everything you need to run our emotion detection:
 
 *   **Emotion Classification:** Accurately classifies 7 universal emotions: angry, disgust, fear, happy, neutral, sad, surprise.
 *   **Face Detection:** Integrates a fast OpenCV DNN face detector to locate faces in images or video streams.
@@ -56,7 +56,7 @@ This repository provides everything you need to run your own emotion detection:
 *   **Transfer Learning with ViT:** Leverages the power of pre-trained Vision Transformers for high performance.
 *   **Robust Training:** Includes techniques like weighted loss and fine-tuning for challenging datasets.
 
-## 📦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -78,7 +78,7 @@ Before you begin, ensure you have the following installed:
 3.  **Prepare Your Dataset:**
     Your emotion images should be organized into `images/train` and `images/test` directories, with each emotion as a dedicated subfolder. This structure is automatically recognized by `torchvision.datasets.ImageFolder`.
 
-## 📊 Results & Performance
+## Results & Performance
 
 Our journey culminated in a robust Vision Transformer model that achieved a peak validation accuracy of **65.55%** on the challenging FER2013-like dataset. This is a highly competitive result for a 7-class emotion recognition task.
 
@@ -100,7 +100,7 @@ More importantly, the model demonstrates balanced and strong performance across 
 
 **The 'disgust' success story:** Notice the impressive **0.6639 F1-score** for the 'disgust' class! This was a major challenge, starting at 0.00 F1-score, and its significant improvement highlights the effectiveness of using weighted loss and fine-tuning with the Vision Transformer.
 
-## 📸 Visuals of Emotions in Action
+## Visuals of Emotions in Action
 
 This is where our project truly comes alive! Beyond the summary numbers, seeing the model's progress and its decisions helps us understand its strengths and its learning opportunities.
 
@@ -160,7 +160,7 @@ This is where our project truly comes alive! Beyond the summary numbers, seeing 
     *   **True: Surprise, Predicted: Angry:** This is less common but can occur. A strong, sudden intake of breath or a wide-open mouth in surprise might be misread as an aggressive, open-mouthed angry expression, especially if accompanying eyebrow movements are ambiguous.
         *   ![Misclassified Surprise as Angry](assets/surprise_angry.png)
 
-## 👏 Credits & Acknowledgements
+## Credits & Acknowledgements
 
 *   **PyTorch & torchvision:** The foundational deep learning libraries that powered this project.
 *   **OpenCV:** For robust video and image processing utilities, and the pre-trained face detection model.
@@ -171,7 +171,7 @@ This is where our project truly comes alive! Beyond the summary numbers, seeing 
 [`Dataset`](https://www.kaggle.com/datasets/ananthu017/emotion-detection-fer)
 
 
-## 🎉 Conclusion & Let's Connect!
+## Conclusion & Let's Connect!
 
 And there you have it! The journey through the nuanced world of facial emotions, from tackling elusive 'disgust' with weighted loss to finally harnessing the transformative power of Vision Transformers, has been truly rewarding. Witnessing our model learn to 'see' and interpret emotions with remarkable clarity (and achieve over 65% accuracy!) has been a testament to the exciting capabilities of modern deep learning.
 
