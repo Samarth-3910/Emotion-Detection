@@ -1,13 +1,3 @@
-## Key Features
-
-This repository provides everything you need to run our emotion detection:
-
-*   **Emotion Classification:** Accurately classifies 7 universal emotions: angry, disgust, fear, happy, neutral, sad, surprise.
-*   **Face Detection:** Integrates a fast OpenCV DNN face detector to locate faces in images or video streams.
-*   **Real-time Webcam Analysis:** Applies the trained model to live video, displaying predicted emotions overlaid on faces.
-*   **Transfer Learning with ViT:** Leverages the power of pre-trained Vision Transformers for high performance.
-*   **Robust Training:** Includes techniques like weighted loss and fine-tuning for challenging datasets.
-
 ## Getting Started
 
 ### Prerequisites
