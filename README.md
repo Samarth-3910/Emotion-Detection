@@ -67,12 +67,6 @@ Before you begin, ensure you have the following installed:
 
 ### Installation
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/Samarth-3910/Emotion-Detection
-    cd Emotion-Detection
-    ```
-
 2.  **Download Face Detector Models:**
 
     Our real-time system uses pre-trained OpenCV DNN face detection models. Download these two files:(click on links)
